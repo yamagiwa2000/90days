@@ -5,9 +5,9 @@
 	### 20180916 www.yamagiwa2000l.com/r90
 	Script: Simple 90days Report Calculator for Thai Resident
  -->
-	<title>Just Simple 90days Report Calculator</title>
 	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 	<meta name="viewport" content="width=device-width">
+	<title>Just Simple 90days Report Calculator</title>
 	<script>
 		function getYMD(str){
 			var y = str.getFullYear();
@@ -64,13 +64,12 @@
 	<hr>
 	<p>Please input your entry date into Thailand as YYYY/MM/DD...
 	<p>(or calculate from today? Just click the button!)
-	<form name="form1" id="id_form1" action="" onsubmit="onButtonClick();return false;">
+	<form name="form1" id="id_form1" action="https://www.yamagiwa2000.com/r90.html" onsubmit="onButtonClick();return false;">
     <input name="textBox1" id="id_tb1" type="text" value="" />
     <input type="button" value="Apply" onclick="onButtonClick();" />
   </form>
 	<div id="output"></div>
 	<hr>
-
   <p>Entry date is: <span id="ent"></span>
   <p>90 days at: <span id="90d"></span>
   <p>Please report:
