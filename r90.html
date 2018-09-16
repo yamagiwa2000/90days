@@ -1,0 +1,80 @@
+<html>
+<head>
+	<!--
+	### 20180916 www.yamagiwa2000l.com/r90
+	Script: Simple 90days Report Calculator for Thai Resident
+ -->
+	<title>Just Simple 90days Report Calculator</title>
+	<meta name="viewport" content="width=device-width">
+	<script type="text/javascript" language="javascript">
+		function getYMD(str){
+			var y = str.getFullYear();
+			var m = ("00" + (str.getMonth()+1)).slice(-2);
+			var d = ("00" + str.getDate()).slice(-2);
+			var dayOfWeek = str.getDay()
+			var dayOfWeekStr = [ "(Sun)", "(Mon)", "(Tue)", "(Wed)", "(Thu)", "(Fri)", "(Sat)" ][dayOfWeek];
+			var result = y + "/" + m + "/" + d + " " + dayOfWeekStr;
+			return result;
+		}
+		function onButtonClick() {
+			target = document.getElementById("output");
+			entday = document.getElementById("ent");
+			repday = document.getElementById("90d");
+			fromday = document.getElementById("from");
+			untilday = document.getElementById('until');
+
+			var str = document.forms.id_form1.id_tb1.value;
+			var pattern = "^[0-9]{4}\/[0-9]{2}\/[0-9]{2}$";
+			var myreg = new RegExp(pattern);
+			var result = str.match(myreg);
+
+			if (result){
+				target.innerText = "";
+				var cd = new Date(str);
+			} else {
+				if (str == ""){
+					target.innerText = "";
+					var cd = new Date();
+				} else {
+					target.innerText = "please input date with format above.";
+					var cd = new Date();
+				}
+			}
+			enttxt = getYMD(cd);
+			entday.innerText = enttxt;
+
+			cd.setDate( cd.getDate() + 90 );
+			reptxt = getYMD(cd);
+			repday.innerText = reptxt;
+
+			cd.setDate( cd.getDate() - 15 );
+			fromtxt = getYMD(cd);
+			fromday.innerText = fromtxt;
+
+			cd.setDate( cd.getDate() + 22 );
+			untiltxt = getYMD(cd);
+			untilday.innerText = untiltxt;
+		}
+	</script>
+</head>
+<body>
+	<p> >>> 90 days report calculator <<<
+	<hr>
+	<p>Please input your entry date into Thailand as YYYY/MM/DD...
+	<p>(or calculate from today? Just click the button!)
+	<form name="form1" id="id_form1" action="" onsubmit="onButtonClick();return false;">
+    <input name="textBox1" id="id_tb1" type="text" value="" />
+    <input type="button" value="Apply" onclick="onButtonClick();" />
+  </form>
+	<div id="output"></div>
+	<hr>
+
+  <p>Entry date is: <span id="ent"></span>
+  <p>90 days at: <span id="90d"></span>
+  <p>Please report:
+  <br>From: <span id="from"></span>
+  <br>Until: <span id="until"></span>
+	<p>
+  <hr>
+</body>
+</html>
